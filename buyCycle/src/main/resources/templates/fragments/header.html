@@ -1,0 +1,31 @@
+<!-- src/main/resources/templates/fragments/header.html -->
+<div th:fragment="header">
+    <!-- Your header content goes here -->
+    <nav>
+        <div class="nav-bar">
+            <div class="logo">BuyCycle</div>
+            <div class="search">
+                <span class="material-symbols-outlined search-icon"> search </span>
+                <input class="search-bar" placeholder="Find Your Ride..." type="text" />
+            </div>
+            <div class="log-in ">
+                <a href="#">Sign Up</a>
+                <a href="#">Log In</a>
+             <a id="addProduct" th:href="@{/product/add}" style="margin-top: 10px; display: inline-block;">Add product</a>
+
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="selected-link">Home</a>
+            <a href="#">Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Men's Bikes</a>
+            <a href="#">Women's Bikes</a>
+            <a href="#">Kids' Bikes</a>
+            <a href="#">Sale</a>
+            <a href="#">Accessories</a>
+            <a href="#">Cycling Gear</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+</div>
