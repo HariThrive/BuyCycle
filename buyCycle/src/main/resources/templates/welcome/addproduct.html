@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add Product</title>
+	<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
 
-<!--    <link rel="stylesheet" th:href="@{/ui/css/styles.css}">-->
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Poppins', sans-serif;
-        }
+	<link rel="stylesheet" th:href="@{/ui/css/styles.css}">
+	<style>
+		body {
+			background-color: #f8f9fa;
+			font-family: 'Poppins', sans-serif;
+		}
 
-        .container {
-            max-width: 1600px;
-            margin: 50px auto;
-        }
+		.container {
+			max-width: 1600px;
+			margin: 50px auto;
+		}
 
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+		.card {
+			background: white;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+		.form-group {
+			margin-bottom: 15px;
+		}
 
-        label {
-            font-weight: 600;
-        }
+		label {
+			font-weight: 600;
+		}
 
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
+		input,
+		select,
+		textarea {
+			width: 100%;
+			padding: 10px;
+			margin-top: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 14px;
+		}
 
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+		button {
+			background-color: #28a745;
+			color: white;
+			padding: 10px;
+			width: 100%;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
 
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+		button:hover {
+			background-color: #218838;
+		}
+	</style>
 </head>
+
 <body>
-<main>
-    <div class="container">
-        <div class="card">
-          <div class="col-12" id="inputTaker"></div>
-            <h2 style="text-align: center;">Add New Product</h2>
-            <button onclick="ajaxLoad(1, 'edit', 'update')">Click Me</button>
+	<main>
+		<div class="container">
 
-            <div id="collapseAddHCard" class="card-header collapse px-0" style="background-color: transparent; border:none;">
-                <div class="col-12" id="inputTaker"></div>
-            </div>
-        </div>
-    </div>
-    
-  <script th:src="@{/js/companysetup/addproduct.js}"></script>
+			<div id="collapseAddHCard" class="card-header  px-0" style="background-color: transparent; border:none;">
+				<div class="col-12" id="inputTaker"></div>
+			</div>
+		</div>
+		</div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script th:src="@{/js/companysetup/addproduct.js}"></script>
 
-</main>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	</main>
 </body>
+
 </html>
