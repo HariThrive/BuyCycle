@@ -1,4 +1,8 @@
-function ajaxLoad(id, buttonType, actionName) {
+window.addEventListener('DOMContentLoaded', event => {
+	asioxLoad('', '', '')
+});
+
+function asioxLoad(id, buttonType, actionName) {
     console.log("ajaxLoad function called with:", id, buttonType, actionName);
     debugger
     const inputTaker = document.querySelector('#inputTaker');
@@ -9,6 +13,7 @@ function ajaxLoad(id, buttonType, actionName) {
     }
 
 }
+
 
 var addproduct =
 	'<form id="newForm" enctype="multipart/form-data">' +
@@ -22,14 +27,14 @@ var addproduct =
 				'<div class="row">' +
 					'<div class="col-sm-12 col-md-3 col-lg-2 col-xl-3">' +
 						'<div class="form-group custom-form-group">' +
-							'<input class="form-control custom-input" id="tenderId" name="purchaseOrderDetails.tender" placeholder="">' +
-							'<label>Item Name &nbsp;<font color="red">*</font></label>' +
+							'<input class="form-control custom-input" id="productName" name="productName" placeholder="">' +
+							'<label>Product Name &nbsp;<font color="red">*</font></label>' +
 						'</div>' +
 					'</div>' +
 				
 					'<div class="col-sm-12 col-md-3 col-lg-2 col-xl-3">' +
 						'<div class="form-group custom-form-group">' +
-							'<input class="form-control custom-input" id="tenderId" name="purchaseOrderDetails.tender" placeholder="">' +
+							'<input class="form-control custom-input" id="description" name="description" placeholder="">' +
 							'<label>Description &nbsp;<font color="red">*</font></label>' +
 						'</div>' +
 					'</div>' +
@@ -37,7 +42,7 @@ var addproduct =
 					'<div class="col-sm-12 col-md-3 col-lg-2 col-xl-2 ">' +
 						'<div class="form-group custom-form-group">' +
 							'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Item"' +
-								' name="purchaseItemDetailsVOList[0].itemSetup.idEnc" id="itemId0" onchange="catogery(this)" >' +
+								' name="catogery" id="catogeryId" onchange="catogerys(this)" >' +
 									'<option value="0">---Select Item---</option> ' +
 									'<option value="1">---cycle---</option> ' +
 									'<option value="2">---Equipment---</option> ' +
@@ -49,7 +54,7 @@ var addproduct =
 					'<div class="col-sm-12 col-md-3 col-lg-2 col-xl-2">' +
 						'<div class="form-group custom-form-group">' +
 							'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Item"' +
-								' name="purchaseItemDetailsVOList[0].itemSetup.idEnc" id="itemId0" onchange="populateItemGstRate(this)" >' +
+								' name="subCatogery" id="subCatogery" onchange="populateItemGstRate(this)" >' +
 									' <option value="0">---Select Item---</option> itemOptions' +
 									'  <option value="1">---cycle---</option> itemOptions' +
 							' </select>' +
@@ -59,7 +64,7 @@ var addproduct =
 				'</div>' +
 					'<div class="col-sm-12 col-md-3 col-lg-2 col-xl-3">' +
 						'<div class="form-group custom-form-group">' +
-							'<input class="form-control custom-input" id="tenderId" name="purchaseOrderDetails.tender" placeholder="">' +
+							'<input class="form-control custom-input" id="productPrice" name="productPrice" placeholder="">' +
 							'<label>sale price &nbsp;<font color="red">*</font></label>' +
 						'</div>' +
 					'</div>' +
@@ -70,20 +75,24 @@ var addproduct =
 		'<div class="card mt-2 " id ="equipment" style="display: none;">'+
 		'</div>'+
 		
+		  
+			'<div class="card mt-2 " id ="buttonSpace" style="display: none;">'+
+			'</div>'+
+		
 		
 		
 	'</form>';
 	
-var cycle = `` +
+var cycleTemplate = `` +
   `<div class="row">` +
   
    	 `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select material"  id="material">' +
+       		'<select class="form-select  custom-select custom-input"  name="material" data-width="100%" data-live-search="true" title="Select material"  id="material">' +
           		`<option value="0">---Select Material---</option>` +
-          		`<option value="1">Steel</option>` +
-         		 `<option value="2">Alloy</option>` +
-         		 `<option value="3">Carbon Fiber</option>` +
+          		`<option value="steel">Steel</option>` +
+         		 `<option value="Alloy">Alloy</option>` +
+         		 `<option value="Carbon">Carbon Fiber</option>` +
        		 `</select>` +
         	`<label>Cycle material<font color="red">*</font></label>`+
 		`</div>` +
@@ -91,11 +100,11 @@ var cycle = `` +
     
     `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select break"  id="break">' +
+       		'<select class="form-select  custom-select custom-input" name="break" data-width="100%" data-live-search="true" title="Select break"  id="breaks">' +
           		`<option value="0">---Select Break Type---</option>` +
-          		`<option value="1">Disc</option>` +
-         		 `<option value="2">Rim</option>` +
-         		 `<option value="3">Drum</option>` +
+          		`<option value="Disc">Disc</option>` +
+         		 `<option value="Rim">Rim</option>` +
+         		 `<option value="Drum">Drum</option>` +
        		 `</select>` +
         	`<label>Cycle Break<font color="red">*</font></label>`+
 		`</div>` +
@@ -103,11 +112,11 @@ var cycle = `` +
     
       `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Tyre Type"  id="TyreType">' +
+       		'<select class="form-select  custom-select custom-input" name ="Tyre" data-width="100%" data-live-search="true" title="Select Tyre Type"  id="TyreType">' +
           		`<option value="0">---Select Tyre Type---</option>` +
-          		`<option value="1">Tubeless</option>` +
-         		 `<option value="2">Tube</option>` +
-         		 `<option value="3">Solid Rubber</option>`+
+          		`<option value="Tubeless">Tubeless</option>` +
+         		 `<option value="Tube">Tube</option>` +
+         		 `<option value="Rubber">Solid Rubber</option>`+
        		 `</select>` +
         	`<label>Tyre Type<font color="red">*</font></label>`+
 		`</div>` +
@@ -115,10 +124,10 @@ var cycle = `` +
     
      `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Gear Type"  id="gearType">' +
+       		'<select class="form-select  custom-select custom-input" name="gear" data-width="100%" data-live-search="true" title="Select Gear Type"  id="gearType">' +
           		`<option value="0">---Select Gear Type---</option>` +
-          		`<option value="1">Single-speed</option>` +
-         		 `<option value="2">Multi-speed</option>` +
+          		`<option value="Single">Single-speed</option>` +
+         		 `<option value="Multi">Multi-speed</option>` +
        		 `</select>` +
         	`<label>Gear Type<font color="red">*</font></label>`+
 		`</div>` +
@@ -126,11 +135,11 @@ var cycle = `` +
     
       `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Gear Type"  id="frameSize">' +
+       		'<select class="form-select  custom-select custom-input" name="frame"data-width="100%" data-live-search="true" title="Select Gear Type"  id="frameSize">' +
           		`<option value="0">---Select Frame Size---</option>` +
-          		`<option value="1">17</option>` +
-         		 `<option value="2">19</option>` +
-         		 `<option value="3">21</option>` +
+          		`<option value="17">17</option>` +
+         		 `<option value="19">19</option>` +
+         		 `<option value="21">21</option>` +
        		 `</select>` +
         	`<label>Frame Size<font color="red">*</font></label>`+
 		`</div>` +
@@ -138,86 +147,102 @@ var cycle = `` +
     
      `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" data-width="100%" data-live-search="true" title="Select Gear Type"  id="Suspension">' +
+       		'<select class="form-select  custom-select custom-input" name="suspension" data-width="100%" data-live-search="true" title="Select Gear Type"  id="Suspension">' +
           		`<option value="0">---Select Suspension---</option>` +
-          		`<option value="1">None</option>` +
-         		 `<option value="2">Front</option>` +
-         		 `<option value="3">FUll</option>` +
+          		`<option value="None">None</option>` +
+         		 `<option value="Front">Front</option>` +
+         		 `<option value="FUll">FUll</option>` +
        		 `</select>` +
         	`<label>Suspension<font color="red">*</font></label>`+
 		`</div>` +
     `</div>` +
     
-'<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
-  '<div class="position-relative">' +
-    '<input type="text" placeholder="Color (e.g. red or #00ff00)" ' +
-           'class="form-control ps-5" oninput="updateSiblingColor(this)">' +
+//'<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
+//  '<div class="position-relative">' +
+//    '<input type="text" placeholder="Color (e.g. red or #00ff00)" ' +
+//           'class="form-control ps-5" oninput="updateSiblingColor(this)">' +
+//
+//    '<input type="color" value="#000000" ' +
+//           'class="position-absolute top-50 start-0 border-0" ' +
+//           'style="width: 2rem; height: 2rem; pointer-events: none; transform: translateY(-52%);" ' +
+//           'tabindex="-1" disabled>' +
+//  '</div>' +
+//'</div>' +
+//
+//'<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
+//  '<div class="position-relative">' +
+//    '<input type="text" placeholder="Color (e.g. red or #00ff00)" ' +
+//           'class="form-control ps-5" oninput="updateSiblingColor(this)">' +
+//
+//    '<input type="color" value="#000000" ' +
+//           'class="position-absolute top-50 start-0 border-0" ' +
+//           'style="width: 2rem; height: 2rem; pointer-events: none; transform: translateY(-52%);" ' +
+//           'tabindex="-1" disabled>' +
+//  '</div>' +
+//'</div>'+
 
-    '<input type="color" value="#000000" ' +
-           'class="position-absolute top-50 start-0 border-0" ' +
-           'style="width: 2rem; height: 2rem; pointer-events: none; transform: translateY(-52%);" ' +
-           'tabindex="-1" disabled>' +
-  '</div>' +
-'</div>' +
-
-'<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
-  '<div class="position-relative">' +
-    '<input type="text" placeholder="Color (e.g. red or #00ff00)" ' +
-           'class="form-control ps-5" oninput="updateSiblingColor(this)">' +
-
-    '<input type="color" value="#000000" ' +
-           'class="position-absolute top-50 start-0 border-0" ' +
-           'style="width: 2rem; height: 2rem; pointer-events: none; transform: translateY(-52%);" ' +
-           'tabindex="-1" disabled>' +
-  '</div>' +
-'</div>'+
-
-  '<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
-   '<label>Upload Image<font color="red">*</font></label>' +
-	'<div class="form-group custom-form-group">' +
-	 
-    '<input class="form-control" type="file" id="uploadfileId0" name="voucherUploadsList[0].fileName" onchange="validateFile(this)">' +
-    '</div>'+
-    
-  '</div>'+
+//  '<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">' +
+//   '<label>Upload Image<font color="red">*</font></label>' +
+//	'<div class="form-group custom-form-group">' +
+//	 
+//    '<input class="form-control" type="file" id="uploadfileId0" name="voucherUploadsList[0].fileName" onchange="validateFile(this)">' +
+//    '</div>'+
+//    
+//  '</div>'+
   
   '</div>'+
     '</div>'+
 ``;
 
 						
-var equipment = ""+
+var equipmentTemplate = ""+
 '<div class="form-group custom-form-group">' +
-							'<input class="form-control custom-input" id="tenderId" name="purchaseOrderDetails.tender" placeholder="">' +
+							'<input class="form-control custom-input" id="equipment" name="none" placeholder="">' +
 							'<label>none &nbsp;<font color="red">*</font></label>' +
 						'</div>' ;
 
-const saveTemplate = ''
-'<button type="button" id="saveButton" class="btn btn-md btn-success fw-bolder fs-7">Save' +
-	'			</button>';
+const saveTemplate = `
+    <div class="row  justify-content-center">
+            <div class="col-sm-12 col-md-3 col-lg-2 col-xl-2">
+                <button id="saveButton" type="button" class="btn btn-md btn-success fw-bold" style="font-size: 1.5rem; padding: 0.25rem 0.5rem;">Save</button>
+            </div>
+    </div>
+`;
 
- 
-function catogery(selectElement) {
+
+
+
+function catogerys(selectElement) {
 	debugger
-    let selectedValue = $(selectElement).val();
-    if (selectedValue === "1") {  
-        $("#cycle").show().html(cycle);
-          $("#buttonSpace").show().html(saveTemplate);
-        $("#equipment").hide();
-    }
-     else if(selectedValue === "2") {
-        $("#cycle").hide();
-        $("#equipment").show().html(equipment);
-    }
-    else{
-	 $("#cycle").hide();
-	  $("#none").hide();
-}
+	let selectedValue = selectElement.value;
+	if (selectedValue === "1") {
+		document.getElementById('cycle').style.display = "block";
+		document.getElementById('cycle').innerHTML = cycleTemplate;
+		
+		document.getElementById('buttonSpace').style.display = 'block';
+		document.getElementById('buttonSpace').innerHTML = saveTemplate;
+		
+		document.getElementById('equipment').style.display ="none;"
+		
+	}
+	else if (selectedValue === "2") {
+		console.log(axios);
+
+		document.getElementById('cycle').style.display = 'none';
+		
+		document.getElementById('equipment').style.display ='block';
+		document.getElementById('equipment').innerHTML = equipmentTemplate;
+		
+		document.getElementById("buttonSpace").style.display = 'block';
+		document.getElementById("buttonSpace").innerHTML = saveTemplate;
+	}
+	else {
+		$("#cycle").hide();
+		$("#none").hide();
+	}
 }
 
-    window.addEventListener('DOMContentLoaded', event => {
-  ajaxLoad('', '', '')
-});
+
    
   function addColorPicker() {
     const colorGroup = document.getElementById("colorPickerGroup");
@@ -237,7 +262,6 @@ function updateSiblingColor(textInput) {
   const hex = getHexColor(textInput.value);
   if (!hex) return;
 
-  // Find the color input inside the same wrapper
   const colorInput = textInput.parentElement.querySelector('input[type="color"]');
   if (colorInput) {
     colorInput.value = hex;
@@ -261,6 +285,29 @@ function getHexColor(color) {
 
   return `#${r}${g}${b}`;
 }
+
+
+ document.querySelector('#inputTaker').addEventListener('click', function(event) {
+    if (event.target && event.target.id === 'saveButton') {
+        handleSaveButtonClick();
+    }
+});
+
+function handleSaveButtonClick() {
+    const form = document.getElementById('newForm');
+    const formData = new FormData(form);
+
+    axios.post('/product/save', formData)
+        .then(function (response) {
+            console.log('Product saved successfully:', response);
+        })
+        .catch(function (error) {
+            console.error('Error details:', error.response || error);
+        });
+}
+
+
+
 
 
 
