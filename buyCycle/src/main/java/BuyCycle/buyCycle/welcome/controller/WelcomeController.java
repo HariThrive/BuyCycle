@@ -24,8 +24,8 @@ public class WelcomeController {
 	    public String addproduct() {
 	        System.out.println("Welcome page is being loaded");
 	        
-	        return "welcome/addproduct";  // Corrected the folder name
-//	        return "error/notfound404";
+//	        return "welcome/addproduct";  // Corrected the folder name
+	        return "error/notfound404";
 //	        return "error/comingsoon";
 	    }
 

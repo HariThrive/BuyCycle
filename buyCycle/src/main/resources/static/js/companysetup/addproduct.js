@@ -100,7 +100,7 @@ var cycleTemplate = `` +
     
     `<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">` +
 	   	 `<div class="form-group custom-form-group">` +
-       		'<select class="form-select  custom-select custom-input" name="break" data-width="100%" data-live-search="true" title="Select break"  id="break">' +
+       		'<select class="form-select  custom-select custom-input" name="break" data-width="100%" data-live-search="true" title="Select break"  id="breaks">' +
           		`<option value="0">---Select Break Type---</option>` +
           		`<option value="Disc">Disc</option>` +
          		 `<option value="Rim">Rim</option>` +

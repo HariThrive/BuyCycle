@@ -10,5 +10,7 @@ public class productInfoVO {
 	    private String category;
 	    private String subCategory;
 	    private Double productPrice;
+	   
+	    private CycleDetailsVO cycle;
 	    private String none;
 }
